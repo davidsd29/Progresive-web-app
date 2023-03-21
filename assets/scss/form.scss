@@ -33,6 +33,27 @@ form {
         }
     }
 
+    &#filter-form {
+        max-width: 10em;
+        padding: 25px;
+        text-align: left;
+        color: color(button);
+        background-color: color(quaternary);
+        border-top: 1px solid color(highlight);
+        border-bottom: 1px solid color(highlight);
+        border-right: 3px solid color(button);
+
+        fieldset {
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            margin: .2em 0;
+
+            input {
+                width: fit-content;
+            }
+        }
+    }
+
     input,
     select {
         width: 100%;

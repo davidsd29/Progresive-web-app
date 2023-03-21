@@ -56,6 +56,17 @@ body:has(div.open) main {
     filter: blur(7px);
 }
 
+body:has([name="scanner"]:checked) .pop-up {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+input[name="scanner"] {
+    display: none;
+}
+
+
 .pop-up {
     position: fixed;
     top: 50%;

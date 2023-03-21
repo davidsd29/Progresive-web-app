@@ -1,0 +1,54 @@
+<section id="shopping-list">
+    <aside>
+        <label>
+            <input type="checkbox" name="open-filter">
+            <p>Filter</p>
+
+        </label>
+        <!-- <div>
+                    </div> -->
+        <form action="/search/filter" id="filter-form">
+            <h4>Filter to your liking</h4>
+
+            <fieldset>
+                <input type="radio" name="filter" id="filter-sugar" value="sugar">
+                <label for="filter-sugar">Sugar</label>
+            </fieldset>
+
+            <fieldset>
+                <input type="radio" name="filter" id="filter-salt" value="salt">
+                <label for="filter-salt">Salt</label>
+            </fieldset>
+
+            <fieldset>
+                <input type="radio" name="filter" id="filter-carb" value="carb">
+                <label for="filter-carb">Carbohydrates</label>
+            </fieldset>
+
+            <fieldset>
+                <input type="radio" name="filter" id="filter-proteine" value="proteine">
+                <label for="filter-proteine">Proteine</label>
+            </fieldset>
+
+            <input type="submit" id="filter-submit" class="btn" value="Apply">
+        </form>
+    </aside>
+
+    <h2>Your shopping list</h2>
+
+    <ul id="list-frame">
+        <li id="empty-list">
+            <p>Your list is empty, please scan some products to fill it up</p>
+            <img src="img/sad-angry.png" alt="A sad-angry face">
+        </li>
+    </ul>
+
+    <div class="filter">
+        <h3>Poducts</h3>
+        <aside>
+            <p>Total: <span id="filter-awnser"></span></p>
+            <button class="btn">Checkout</button>
+
+        </aside>
+    </div>
+</section>

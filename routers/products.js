@@ -8,10 +8,12 @@ import {GetFetchLink, GetData} from '../controllers/products.js';
     router.get('/:id/', async (req, res) => {
         
         const productInfo = await GetData(GetFetchLink(typeof req.params.id, req.params.id));
-
-        res.render('single', {
+        console.log(productInfo)
+        res.render('pages/single', {
             productInfo
     });
+
+    // res.send(productInfo)
 })
     
 

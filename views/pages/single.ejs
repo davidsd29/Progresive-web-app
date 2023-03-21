@@ -10,8 +10,8 @@
                 <i class="fa fa-pencil"></i>
             </button>
             <div>
-                <img src="<%= productInfo.image_url %>" alt="">
-                <h1><%= productInfo.name %></h1>
+                <img src="<%= productInfo.product.image_url %>" alt="">
+                <h1><%= productInfo.product.product_name %></h1>
             </div>
 
             <button class="btn" id="add-item">Add to list</button>
@@ -25,7 +25,7 @@
 
         <ul>
             <li>
-                <article><%= productInfo.ingredients_text %></article>
+                <article><%= productInfo.product.ingredients_text %></article>
             </li>
 
             <li>
@@ -43,35 +43,34 @@
             <li>
                 <article>
                     <h2>Product values total</h2>
-                    <% console.log(productInfo) %>
                     <div>
                         <p>Carbohydrates:</p>
-                        <span><%= productInfo.nutriments.carbohydrates %> g</span>
+                        <span><%= productInfo.product.nutriments.carbohydrates %> g</span>
                     </div>
 
                     <div>
                         <p>Energy:</p>
-                        <span><%= productInfo.nutriments.energy %> g</span>
+                        <span><%= productInfo.product.nutriments.energy %> g</span>
                     </div>
 
                     <div>
                         <p>Fat:</p>
-                        <span><%= productInfo.nutriments.fat %> g</span>
+                        <span><%= productInfo.product.nutriments.fat %> g</span>
                     </div>
 
                     <div>
                         <p>Saturated-fat:</p>
-                        <span><%= productInfo.nutriments['saturated-fat_100g'] %></span>
+                        <span><%= productInfo.product.nutriments['saturated-fat_100g'] %> g</span>
                     </div>
 
                     <div>
                         <p>Proteins:</p>
-                        <span><%= productInfo.nutriments.proteins %> g</span>
+                        <span><%= productInfo.product.nutriments.proteins %> g</span>
                     </div>
 
                     <div>
                         <p>Sugars:</p>
-                        <span><%= productInfo.nutriments.sugars %> g</span>
+                        <span><%= productInfo.product.nutriments.sugars %> g</span>
                     </div>
                 </article>
             </li>
@@ -81,32 +80,32 @@
                     <h2>Values per 100g</h2>
                     <div>
                         <p>Carbohydrates:</p>
-                        <span><%= productInfo.nutriments.carbohydrates_100g %></span>
+                        <span><%= productInfo.product.nutriments.carbohydrates_100g %> g</span>
                     </div>
 
                     <div>
                         <p>Energy:</p>
-                        <span><%= productInfo.nutriments.energy_100g %></span>
+                        <span><%= productInfo.product.nutriments.energy_100g %> g</span>
                     </div>
 
                     <div>
                         <p>Fat:</p>
-                        <span><%= productInfo.nutriments.fat_100g %> g</span>
+                        <span><%= productInfo.product.nutriments.fat_100g %> g</span>
                     </div>
 
                     <div>
                         <p>Saturated-fat:</p>
-                        <span><%= productInfo.nutrimentsnutriments["saturated-fat_100g"] %> g</span>
+                        <span><%= productInfo.product.nutriments["saturated-fat_100g"] %> g</span>
                     </div>
 
                     <div>
                         <p>Proteins:</p>
-                        <span><%= productInfo.nutrimentsnutriments.proteins_100g %> g</span>
+                        <span><%= productInfo.product.nutriments.proteins_100g %> g</span>
                     </div>
 
                     <div>
                         <p>Sugars:</p>
-                        <span><%= productInfo.nutriments.sugars_100g %> g</span>
+                        <span><%= productInfo.product.nutriments.sugars_100g %> g</span>
                     </div>
 
                 </article>

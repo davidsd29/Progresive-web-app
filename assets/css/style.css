@@ -25,10 +25,11 @@ header ul {
   align-items: center;
   padding: 0.5em;
 }
-header ul li button {
+header ul label {
+  display: inline-block;
+  width: 3em;
   padding: 0.3em;
-  background: none;
-  border: 1px solid rgba(0, 0, 0, 0.514);
+  border: 1px solid rgba(0, 0, 0, 0.5137254902);
 }
 header .fa {
   font-size: 2em;
@@ -75,14 +76,6 @@ header .fa {
 #shopping-list > aside > label input {
   position: absolute;
   left: 9999em;
-}
-#shopping-list > aside div {
-  background-color: #FFFFFF;
-  padding: 25px;
-  color: #2E9BD8;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  border-right: 3px solid #2E9BD8;
 }
 #shopping-list h3:first-letter {
   text-transform: uppercase;
@@ -160,6 +153,24 @@ form#serach-form button {
   height: 2em;
   border-radius: 0 0.5em 0.5em 0;
   width: 20%;
+}
+form#filter-form {
+  max-width: 10em;
+  padding: 25px;
+  text-align: left;
+  color: #2E9BD8;
+  background-color: #FFFFFF;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-right: 3px solid #2E9BD8;
+}
+form#filter-form fieldset {
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  margin: 0.2em 0;
+}
+form#filter-form fieldset input {
+  width: fit-content;
 }
 form input,
 form select {
@@ -336,6 +347,16 @@ fieldset {
 
 body:has(div.open) main {
   filter: blur(7px);
+}
+
+body:has([name=scanner]:checked) .pop-up {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+input[name=scanner] {
+  display: none;
 }
 
 .pop-up {
@@ -516,7 +537,8 @@ a {
 
 .btn,
 #shopping-list button {
-  width: 100%;
+  height: 2em;
+  font-size: 0.7em;
   padding: 0.5em 1em;
   color: black;
   border-radius: 0.5em;
@@ -545,6 +567,10 @@ a {
   line-height: 0.8em;
   border: 2px solid #2E9BD8;
   background-color: #FFFFFF;
+}
+.btn.login,
+#shopping-list button.login {
+  width: 100%;
 }
 
 .hidden {
@@ -667,17 +693,15 @@ main > section:not(#product-detail)#shopping-card > section:first-of-type div:fi
   gap: 1em;
 }
 main > section:not(#product-detail)#shopping-card > section:first-of-type div:last-of-type {
+  gap: 1em;
   margin-top: 1em;
 }
-main > section:not(#product-detail)#shopping-card > section:first-of-type div:last-of-type a {
-  width: 60%;
+main > section:not(#product-detail)#shopping-card > section:first-of-type div:last-of-type label {
   border-radius: 0.5em;
-  font-size: 0.7em;
   text-decoration: none;
   background-color: #2E9BD8;
 }
-main > section:not(#product-detail)#shopping-card > section:first-of-type div:last-of-type button {
-  width: 30%;
+main > section:not(#product-detail)#shopping-card > section:first-of-type div:last-of-type a {
   border: 2px solid #2E9BD8;
   background-color: #FFFFFF;
 }

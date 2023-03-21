@@ -18,15 +18,16 @@ header {
         justify-content: center;
         align-items: center;
         padding: .5em;
-        
-        li {
-            button {
-                padding: .3em;
-                background: none;
-                border: 1px solid rgba(0, 0, 0, 0.514);
-            }
+
+        label {
+            display: inline-block;
+            width: 3em;
+            padding: 0.3em;
+            border: 1px solid #00000083;
         }
     }
+
+
 
    .fa {
         font-size: 2em;
@@ -77,15 +78,6 @@ header {
                 position: absolute;
                 left: 9999em;
             }
-        }
-
-        div {
-            background-color: color(quaternary);
-            padding: 25px;
-            color: color(button);
-            border-top: 1px solid color(highlight);
-            border-bottom: 1px solid color(highlight);
-            border-right: 3px solid color(button);
         }
     }
 

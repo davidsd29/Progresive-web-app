@@ -6,6 +6,14 @@ const welcome =  (req, res) => {
     res.render("partials/popup/start")
 }
 
+const register =  (req, res) => {
+    res.render("pages/register")
+}
+
+const login =  (req, res) => {
+    res.render("pages/login")
+}
+
 const home =  (req, res) => {
     const pageType = "home";
     res.render("pages/main", {
@@ -28,12 +36,12 @@ const groceries =  (req, res) => {
        pageType
     })
 }
-
 export {
     home,
     card,
     index,
+    login,
     welcome,
+    register,
     groceries,
-
 }

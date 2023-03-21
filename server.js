@@ -7,7 +7,6 @@ import path from 'path';
 
 // Routes
 import main from './routers/pages.js';
-import login from './routers/login.js';
 import products from './routers/products.js';
 import search from './routers/search.js';
 
@@ -24,8 +23,6 @@ app.use(express.static(path.join(__dirname, 'assets')));
 
 app.use('/', main);
 app.use('/product', products);
-app.use('/login', login);
-app.use('/card', login);
 app.use('/serach', search);
 
 
