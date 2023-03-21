@@ -1,0 +1,123 @@
+<%- include('../partials/header'); %>
+<main>
+    <button id="stop-camera-scan"></button>
+    <div id="scanner"></div>
+
+    <section id="product-detail">
+
+        <section class="heading">
+            <button id="edit-product-btn">
+                <i class="fa fa-pencil"></i>
+            </button>
+            <div>
+                <img src="<%= productInfo.image_url %>" alt="">
+                <h1><%= productInfo.name %></h1>
+            </div>
+
+            <button class="btn" id="add-item">Add to list</button>
+
+            <div>
+                <button class="btn decrease ">-</button>
+                <p id="counter">0</p>
+                <button class="btn increase ">+</button>
+            </div>
+        </section>
+
+        <ul>
+            <li>
+                <article><%= productInfo.ingredients_text %></article>
+            </li>
+
+            <li>
+                <h2>Nutrition score</h2>
+                <ul class="nutriscore">
+                    <li id="nutriscore-A">A</li>
+                    <li id="nutriscore-B">B</li>
+                    <li id="nutriscore-C">C</li>
+                    <li id="nutriscore-D">D</li>
+                    <li id="nutriscore-E">E</li>
+                </ul>
+                <p></p>
+            </li>
+
+            <li>
+                <article>
+                    <h2>Product values total</h2>
+                    <% console.log(productInfo) %>
+                    <div>
+                        <p>Carbohydrates:</p>
+                        <span><%= productInfo.nutriments.carbohydrates %> g</span>
+                    </div>
+
+                    <div>
+                        <p>Energy:</p>
+                        <span><%= productInfo.nutriments.energy %> g</span>
+                    </div>
+
+                    <div>
+                        <p>Fat:</p>
+                        <span><%= productInfo.nutriments.fat %> g</span>
+                    </div>
+
+                    <div>
+                        <p>Saturated-fat:</p>
+                        <span><%= productInfo.nutriments['saturated-fat_100g'] %></span>
+                    </div>
+
+                    <div>
+                        <p>Proteins:</p>
+                        <span><%= productInfo.nutriments.proteins %> g</span>
+                    </div>
+
+                    <div>
+                        <p>Sugars:</p>
+                        <span><%= productInfo.nutriments.sugars %> g</span>
+                    </div>
+                </article>
+            </li>
+
+            <li>
+                <article>
+                    <h2>Values per 100g</h2>
+                    <div>
+                        <p>Carbohydrates:</p>
+                        <span><%= productInfo.nutriments.carbohydrates_100g %></span>
+                    </div>
+
+                    <div>
+                        <p>Energy:</p>
+                        <span><%= productInfo.nutriments.energy_100g %></span>
+                    </div>
+
+                    <div>
+                        <p>Fat:</p>
+                        <span><%= productInfo.nutriments.fat_100g %> g</span>
+                    </div>
+
+                    <div>
+                        <p>Saturated-fat:</p>
+                        <span><%= productInfo.nutrimentsnutriments["saturated-fat_100g"] %> g</span>
+                    </div>
+
+                    <div>
+                        <p>Proteins:</p>
+                        <span><%= productInfo.nutrimentsnutriments.proteins_100g %> g</span>
+                    </div>
+
+                    <div>
+                        <p>Sugars:</p>
+                        <span><%= productInfo.nutriments.sugars_100g %> g</span>
+                    </div>
+
+                </article>
+            </li>
+        </ul>
+
+        <!-- nutri score -->
+        <section id="nutrition-score"></section>
+        <section id="product-content"></section>
+        <section id="nutritional-values"></section>
+
+    </section>
+</main>
+<%- include('../partials/footer'); %>

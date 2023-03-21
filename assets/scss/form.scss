@@ -1,0 +1,196 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+
+    &#login-form {
+        img {
+            width: 14em;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }   
+    
+    &#serach-form {
+        margin: 1em 0;
+        fieldset {
+            display: flex;
+            align-items: center;
+            margin: 0;
+        }
+
+        input {
+            height: 2em;
+            width: 80%;
+            border-radius: .5em 0 0 .5em ;
+        }
+
+        button {
+            height: 2em;
+            border-radius: 0 .5em .5em 0;
+            width: 20%;
+        }
+    }
+
+    input,
+    select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        margin: 8px 0;
+    }
+
+    .form-respond {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+
+        div {
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            background-color: white;
+            border-radius: 4px;
+            box-shadow: 0px 0px 100px 500px #000000;
+
+            h1 {
+                letter-spacing: -1px;
+                margin-bottom: 20px;
+                color: #4a494b;
+            }
+
+            a {
+                width: 100%;
+                background-color: #29a766;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            a:hover {
+                background-color: #005636;
+            }
+
+            p:last-of-type {
+                line-height: 20px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    fieldset {
+        &:first-of-type {
+            justify-content: space-between;
+            
+            img {
+                height: 4em;
+            }
+        }
+        &:last-of-type {
+            margin: 1em 0;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
+    &#edit-product-form {
+        display: grid;
+        
+        
+        img {
+            height: 9em;
+            margin-left: auto;
+            margin-right: auto;
+            object-fit: contain;
+        }
+    }
+    
+    &#registration-form {
+
+        fieldset:has(input:valid:not(:placeholder-shown)):not(:last-of-type) input{
+            background-color: #b0ffb0;
+        }   
+
+        fieldset:nth-of-type(5),
+        fieldset:nth-of-type(6) {
+        display: grid;
+
+            p {
+                font-size: .5em;
+                font-style: italic;
+                opacity: .5;
+                margin: .4em 0;
+
+                &.error-text {
+                    display: none;
+                    opacity: 1;
+                    color: red;
+                    font-style: italic;
+                }
+            }
+        }
+
+        .form-field-required {
+            label {
+                position: relative;
+            }
+
+            label::after {
+                content: "*";
+                color: color(indicator);
+                position: absolute;
+                top: -4px;
+                padding-left: 5px;
+            }
+
+            &.invalid {
+                input {
+                    border: 2px solid red;
+
+                    &::placeholder {
+                        color: red;
+                        font-style: italic;
+                    }
+
+                }
+
+            }
+        }
+
+    }
+}
+
+fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    border: none;
+}
+
+#filters {
+    h2 {
+        margin-bottom: 1em;
+        font-size: 1em;
+    }
+
+    input[type="radio"] {
+        margin-right: 1em;
+    }
+
+    input[type="submit"] {
+        margin-top: 2em;
+    }
+}

@@ -1,0 +1,30 @@
+<%- include('../partials/header'); %>
+
+<%- include('../partials/popup/scan'); %>
+
+<main>
+    <button id="stop-camera-scan"></button>
+    <div id="scanner"></div>
+    <% switch (pageType) {
+        case 'home': %>
+            <%- include('../partials/home'); %>
+            <% break;
+
+        case 'card' : %>
+
+            <%- include('../partials/card'); %>
+            <% break;
+            
+        case 'list' : %>
+            <%- include('../partials/list'); %>
+            <% break;
+            
+        default : %>
+            <%- include('../partials/home'); %>
+
+    <% } %>
+
+
+</main>
+
+<%- include('../partials/footer'); %>
