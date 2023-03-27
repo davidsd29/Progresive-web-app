@@ -69,6 +69,22 @@ form {
         margin: 8px 0;
     }
 
+    &#add-product-form {
+
+        fieldset {
+            align-items: center;
+
+            input[type="number"], .btn {
+                width: 30%;
+            }
+
+            input[type="number"] {
+                margin: 0 .5em;
+            }
+
+        }
+    }
+
     .form-respond {
         position: absolute;
         top: 50%;

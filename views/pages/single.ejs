@@ -1,4 +1,9 @@
 <%- include('../partials/header'); %>
+
+<%- include('../partials/popup/scan'); %>
+<%- include('../partials/popup/complete'); %>
+
+    
 <main>
     <button id="stop-camera-scan"></button>
     <div id="scanner"></div>
@@ -14,13 +19,16 @@
                 <h1><%= productInfo.product.product_name %></h1>
             </div>
 
-            <button class="btn" id="add-item">Add to list</button>
+            <form action="/product/add/<%= productInfo.product._id %>" id="add-product-form" method="POST">
+                <input type="submit" class="btn" data-barcode="<%= productInfo.product._id %>" value="Add to list">
 
-            <div>
-                <button class="btn decrease ">-</button>
-                <p id="counter">0</p>
-                <button class="btn increase ">+</button>
-            </div>
+                <fieldset>
+                    <button type="button" class="btn decrease ">-</button>
+                    <input type="number" name="product_amount" id="counter" min="1" value="0">
+                    <button type="button" class="btn increase ">+</button>
+                </fieldset>
+            </form>
+
         </section>
 
         <ul>
@@ -111,11 +119,6 @@
                 </article>
             </li>
         </ul>
-
-        <!-- nutri score -->
-        <section id="nutrition-score"></section>
-        <section id="product-content"></section>
-        <section id="nutritional-values"></section>
 
     </section>
 </main>

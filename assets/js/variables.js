@@ -13,8 +13,17 @@ const scan = {
     popup: document.getElementById("scan-toggle")
 } 
 
+const count = {
+    increaseBtn: document.querySelector(".increase"),
+    decreaseBtn: document.querySelector(".decrease"),
+    addToListBtn: document.querySelector("#add-product-form input[type='submit']"),
+    counterIndex: document.getElementById("counter"),
+    shoppingListIndex: document.getElementById("shopping-list-index"),
+}
+
 
 export { 
     scan,
-    popUp 
+    popUp,
+    count,
 }

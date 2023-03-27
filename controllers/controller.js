@@ -1,3 +1,5 @@
+import {products} from '../data/products.js'
+
 const index =  (req, res) => {
     res.render("pages/index")
 }
@@ -30,10 +32,12 @@ const card =  (req, res) => {
 }
 
 const groceries =  (req, res) => {
+    console.log(req.query)
     const pageType = "list";
-
+    console.log(products);
     res.render("pages/main", {
-       pageType
+       pageType,
+       products
     })
 }
 export {

@@ -3,6 +3,7 @@ dotenv.config();
 
 import { fileURLToPath } from 'url';
 import express from 'express';
+import bodyParser from 'body-parser';
 import path from 'path';
 
 // Routes
@@ -19,6 +20,7 @@ app.set('view engine', 'ejs');
 
 //Middelware (Has to happen before routing)
 app.use(express.static(path.join(__dirname, 'assets')));
+app.use(bodyParser.urlencoded({extended: false}));
 
 
 app.use('/', main);

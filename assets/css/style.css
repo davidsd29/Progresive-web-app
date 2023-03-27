@@ -185,6 +185,15 @@ form select {
 form input[type=submit] {
   margin: 8px 0;
 }
+form#add-product-form fieldset {
+  align-items: center;
+}
+form#add-product-form fieldset input[type=number], form#add-product-form fieldset .btn {
+  width: 30%;
+}
+form#add-product-form fieldset input[type=number] {
+  margin: 0 0.5em;
+}
 form .form-respond {
   position: absolute;
   top: 50%;
@@ -854,7 +863,8 @@ main #product-detail .heading div:last-of-type p {
 main #product-detail .heading .increase,
 main #product-detail .heading .decrease {
   padding: 0;
-  font-size: 2em;
+  font-weight: 900;
+  font-size: 1em;
 }
 main #product-detail .heading h1 {
   margin-bottom: 1em;
