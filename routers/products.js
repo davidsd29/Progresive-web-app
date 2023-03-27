@@ -1,10 +1,19 @@
 import express from 'express';
-import {products} from '../data/products.js'
-import {GetFetchLink, GetData} from '../controllers/products.js';
+import { products, CountTotalValues } from '../data/products.js'
+import { ReplanishData } from '../controllers/products.js';
 const router = express.Router();
 
-router.post('/add/:barcode', (req, res) => {
+router.post('/add/:barcode', async (req, res) => {
  
+    const productInfo = await ReplanishData(( req.params.id, 'product'));
+    console.log(productInfo)
+    // CountTotalValues(
+    //     productInfo.product.nutriments.sugars, 
+    //     productInfo.product.nutriments.salt,
+    //     productInfo.product.nutriments.proteins,
+    //     productInfo.product.nutriments.carbohydrates
+    // )
+    
     const obj = { 
         productCode: req.params.barcode,
         productAmount: req.body.product_amount 
@@ -21,8 +30,7 @@ router.post('/add/:barcode', (req, res) => {
 
 .get('/:id/', async (req, res) => {
     
-    const productInfo = await GetData(GetFetchLink(typeof req.params.id, req.params.id));
-    console.log(productInfo)
+    const productInfo = await ReplanishData(( req.params.id, 'product'));
     res.render('pages/single', {
         productInfo
     });

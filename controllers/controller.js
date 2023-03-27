@@ -1,4 +1,5 @@
-import {products} from '../data/products.js'
+import { products, total_carb, total_sugar, total_salt, total_protein} from '../data/products.js'
+import { ReplanishData } from './products.js'
 
 const index =  (req, res) => {
     res.render("pages/index")
@@ -31,15 +32,60 @@ const card =  (req, res) => {
     })
 }
 
-const groceries =  (req, res) => {
+const groceries = async (req, res) => {
     console.log(req.query)
     const pageType = "list";
-    console.log(products);
-    res.render("pages/main", {
-       pageType,
-       products
-    })
+    let total_value = 0;
+    let total_name;
+
+    const fetchArrays = products.map((item) => {
+		return ReplanishData( item, 'listItem');
+	});
+
+    switch (req.query.filter) {
+        case 'sugar': 
+            total_name = 'sugar'
+            total_value = total_sugar;
+            break;
+
+        case 'salt' : 
+            total_name = 'salt'
+            total_value = total_salt;
+
+            break;
+            
+        case 'protein' :
+            total_name = 'protein'
+            total_value = total_protein;
+
+            break; 
+            
+        case 'carb' :
+            total_name = 'carbohydrates'
+            total_value = total_carb;
+
+            break;
+            
+        default :
+            total_name = 'products'
+            console.log('No filter found');
+    }
+
+
+    Promise.all(fetchArrays).then(shoppingList => {
+        console.log(shoppingList)
+        if (req.query !== {}) total_value = shoppingList.length;
+		// 	DataIsLoading(false);
+
+        res.render("pages/main", {
+            pageType,
+            total_value,
+            shoppingList
+        });
+	});
 }
+
+
 export {
     home,
     card,

@@ -1,0 +1,32 @@
+<li>
+    <div>
+        <img src='<%= item.product.image_url%>' alt='<%= item.product.product_name%>'></img>
+        <aside>
+            <div>
+                <h3><%= item.product.product_name %></h3>
+                <span><%= item.productAmount %></span>
+            </div>
+
+            <section>
+                <div>
+                    <p>Proteins:</p>
+                    <p id='proteins'><%= item.product.nutriments.proteins%> g</p>
+                </div>
+                <div>
+                    <p>Carbs:</p>
+                    <p id='carb'><%= item.product.nutriments.carbohydrates%> g</p>
+                </div>
+                <div>
+                    <p>Sugar:</p>
+                    <p id='sugar'><%= item.product.nutriments.sugars%> g</p>
+                </div>
+                <div>
+                    <p>Salt:</p>
+                    <p id='salt'><%= item.product.nutriments.salt%> g</p>
+                </div>
+            </section>
+        </aside>
+    </div>
+
+    <button class="list-delete" data-value="<%= item.product.id%>">Delete</button>
+</li>

@@ -16,7 +16,10 @@
             <% break;
             
         case 'list' : %>
-            <%- include('../partials/groceries'); %>
+            <%- include('../partials/groceries', {
+                 shoppingList : shoppingList,
+                  total_value : total_value
+            }); %>
             <% break;
             
         default : %>

@@ -16,6 +16,7 @@ function GetFetchLink(type, barcode) {
 }
 
 
+
 // Fetching data
 async function GetData(url) {
 	try {
@@ -30,7 +31,31 @@ async function GetData(url) {
 	}
 }
 
+
+async function ReplanishData(barcode, dataType) {
+	// DataIsLoading(true);
+	const data = await GetData(GetFetchLink(typeof barcode, barcode));
+
+	switch (dataType) {
+		case 'product':
+			// Product Detail
+			return data;
+			// DataIsLoading(false);
+			break;
+
+		case 'listItem':
+			// Groceries List
+			const obj = {
+				product: data.product,
+				productAmount: barcode.productAmount,
+			};
+
+			return obj;
+		default:
+			console.log('data type found');
+	}
+}
+
 export {
-    GetData,
-    GetFetchLink
+	ReplanishData
 }
