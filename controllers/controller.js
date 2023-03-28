@@ -79,6 +79,7 @@ const groceries = async (req, res) => {
 
         res.render("pages/main", {
             pageType,
+            total_name,
             total_value,
             shoppingList
         });

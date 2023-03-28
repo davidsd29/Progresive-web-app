@@ -778,14 +778,23 @@ main > section:not(#product-detail)#shopping-list li {
 }
 main > section:not(#product-detail)#shopping-list li img {
   width: 50%;
+  height: 11em;
+  object-fit: contain;
 }
 main > section:not(#product-detail)#shopping-list li button {
   display: inline-block;
 }
 main > section:not(#product-detail)#shopping-list li div {
   display: flex;
+  align-items: center;
   gap: 1.5em;
   height: auto;
+}
+@media screen and (max-width: 767px) {
+  main > section:not(#product-detail)#shopping-list li div {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 main > section:not(#product-detail)#shopping-list li div aside {
   margin-bottom: 1em;

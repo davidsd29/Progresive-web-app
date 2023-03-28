@@ -40,22 +40,22 @@
 
         
 
-            <!-- <% if (products.length == 0) { console.log(products)%> -->
-            <% if (shoppingList.length == 0) { %>
 
-        <li id="empty-list">
-            <p>Your list is empty, please scan some products to fill it up</p>
-            <img src="img/sad-angry.png" alt="A sad-angry face">
-        </li>
-            <% } else { %>
+        <% if (shoppingList.length == 0) { %>
 
-            <% shoppingList.forEach(item => { console.log(item) %>
+            <li id="empty-list">
+                <p>Your list is empty, please scan some products to fill it up</p>
+                <img src="img/sad-angry.png" alt="A sad-angry face">
+            </li>
+        <% } else { %>
+
+            <% shoppingList.forEach(item => { %>
 
                 <%- include('./loop/list_item', { 
                         item: item 
                     }); %>
-            <% });%>
-        <% } %>
+
+        <% }); }%>
 
     </ul>
 

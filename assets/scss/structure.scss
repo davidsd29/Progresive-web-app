@@ -283,6 +283,8 @@ main {
 
 				img {
 					width: 50%;
+					height: 11em;
+					object-fit: contain;
 				}
 
 				button {
@@ -291,8 +293,14 @@ main {
 
 				div {
 					display: flex;
+					align-items: center;
 					gap: 1.5em;
 					height: auto;
+
+					@include respond-to(up-to-sm) {
+						flex-wrap: wrap;
+						justify-content: center;
+					}
 
 					aside {
 						margin-bottom: 1em;
