@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/', main);
 app.use('/product', products);
-app.use('/serach', search);
+app.use('/search', search);
 
 
 app.use((req, res) => {

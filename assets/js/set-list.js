@@ -4,8 +4,7 @@ const completePopUTpext = document.querySelector("#complete-pop-up p");
 let shoppingCartAmount = 0;
 let counter = 0;
 
-
-count.counterIndex.value = counter;
+if (count.counterIndex !== null) count.counterIndex.value = counter;
 
 function SetProduct(barcode) {
     const groceriesList = JSON.parse(localStorage.getItem("groceries") || "[]");
@@ -16,6 +15,7 @@ function SetProduct(barcode) {
     };
     console.log(product)
 
+    
     if (counter !== 0) {
         CheckShoppingList(counter);
         groceriesList.push(product);
