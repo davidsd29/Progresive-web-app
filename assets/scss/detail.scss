@@ -56,13 +56,20 @@ body:has(div.open) main {
     filter: blur(7px);
 }
 
-body:has([name="scanner"]:checked) .pop-up {
+body:has([name="scanner"]:checked) #scan-pop-up{
     visibility: visible;
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
 }
 
-input[name="scanner"] {
+body:has([name="scan-card"]:checked) #scan-card-pop-up{
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+input[name="scanner"],
+input[name="scan-card"] {
     display: none;
 }
 

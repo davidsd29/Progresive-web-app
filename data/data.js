@@ -1,6 +1,7 @@
 let total_carb, total_sugar, total_salt, total_protein;
 
 const products = [];
+const shoppingCards = []
 
 function CountTotalValues(sugars, salt, protein, carb) {
     total_sugar = total_sugar + sugars;
@@ -14,6 +15,7 @@ export {
     total_salt, 
     total_carb, 
     total_sugar, 
+    shoppingCards,
     total_protein,
     CountTotalValues
 }

@@ -136,20 +136,20 @@ form#login-form img {
   margin-left: auto;
   margin-right: auto;
 }
-form#serach-form {
+form#search-form {
   margin: 1em 0;
 }
-form#serach-form fieldset {
+form#search-form fieldset {
   display: flex;
   align-items: center;
   margin: 0;
 }
-form#serach-form input {
+form#search-form input {
   height: 2em;
   width: 80%;
   border-radius: 0.5em 0 0 0.5em;
 }
-form#serach-form button {
+form#search-form button {
   height: 2em;
   border-radius: 0 0.5em 0.5em 0;
   width: 20%;
@@ -358,13 +358,20 @@ body:has(div.open) main {
   filter: blur(7px);
 }
 
-body:has([name=scanner]:checked) .pop-up {
+body:has([name=scanner]:checked) #scan-pop-up {
   visibility: visible;
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
 }
 
-input[name=scanner] {
+body:has([name=scan-card]:checked) #scan-card-pop-up {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+input[name=scanner],
+input[name=scan-card] {
   display: none;
 }
 
@@ -372,6 +379,8 @@ input[name=scanner] {
   position: fixed;
   top: 50%;
   left: 50%;
+  display: grid;
+  place-items: center;
   width: 90%;
   height: auto;
   padding: 1em;

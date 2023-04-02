@@ -7,10 +7,23 @@ const popUp = {
     closeBtn: document.querySelectorAll(".close")
 }
 
+const shoppingCard = {
+  frame: document.getElementById("shopping-card"),
+  notNowBtn: document.querySelector("#shopping-card section:first-of-type button"),
+  invite: document.querySelector("#shopping-card section:first-of-type"),
+  card: document.querySelector("#shopping-card section:nth-of-type(2)"),
+  saveSection: document.querySelector("#shopping-card section:nth-of-type(3)"),
+  saveBtn: document.querySelector("#shopping-card section:nth-of-type(3) button:first-of-type"),
+  saveLaterBtn: document.querySelector("#shopping-card section:nth-of-type(3) button:last-of-type"),
+  deleteSection: document.querySelector("#shopping-card section:last-of-type"),
+  deleteBtn: document.querySelector("#shopping-card section:last-of-type button")
+} 
+
 const scan = {
     start: document.getElementById("start-camera-scan"),
     stop: document.getElementById("stop-camera-scan"),
-    popup: document.getElementById("scan-toggle")
+    toggle: document.getElementById("scan-toggle"),
+    // card_popup: document.getElementById("scan-toggle")
 } 
 
 const count = {
@@ -26,4 +39,5 @@ export {
     scan,
     popUp,
     count,
+    shoppingCard
 }

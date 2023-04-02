@@ -2,22 +2,32 @@ import express from 'express';
 
 const search = express.Router();
 
-import {ReplanishData} from '../controllers/products.js';
+import { ReplanishData } from '../controllers/products.js';
+import { shoppingCards } from '../data/data.js';
 
+search
+	.get('/', async (req, res) => {
+		const productInfo = await ReplanishData(
+			req.query.search_value,
+			'product'
+		);
 
-search.get('/', async (req, res) => {
-    const productInfo = await ReplanishData( req.query.search_value, 'product');
-    console.log(productInfo)
-    
-// res.send(productInfo.product.codes_tags)
- res.render('pages/single', {
-           productInfo
-    });
-})
+		res.render('pages/single', {
+			productInfo,
+		});
+	})
 
-// .get('/filter', async (req, res) => {
-   
-    
-// })
+	.get('/card', async (req, res) => {
+        let imgString = `https://barcodeapi.org/api/${req.query.search_value}`
+        shoppingCards.push(req.query.search_value)
+        console.log(imgString)
+		
+		    const pageType = "card";
+        res.render("pages/main", {
+            pageType,
+            saved: true,
+            imgString,
+        })
+	});
 
 export default search;

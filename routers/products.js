@@ -1,5 +1,5 @@
 import express from 'express';
-import { products, CountTotalValues } from '../data/products.js'
+import { products, CountTotalValues } from '../data/data.js'
 import { ReplanishData } from '../controllers/products.js';
 const router = express.Router();
 

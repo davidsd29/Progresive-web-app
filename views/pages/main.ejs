@@ -1,6 +1,7 @@
 <%- include('../partials/header'); %>
 
 <%- include('../partials/popup/scan'); %>
+<%- include('../partials/popup/scan-card'); %>
 
 <main>
     <button id="stop-camera-scan"></button>
@@ -11,8 +12,11 @@
             <% break;
 
         case 'card' : %>
-
-            <%- include('../partials/card'); %>
+            <%- include('../partials/card', {
+                saved : saved,
+                imgString : imgString
+                
+            }); %>
             <% break;
             
         case 'list' : %>
@@ -26,6 +30,9 @@
             <%- include('../partials/home'); %>
 
     <% } %>
+
+    <%- include('../partials/card'); %>
+
 
 
 </main>
