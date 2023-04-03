@@ -83,7 +83,7 @@ self.addEventListener('fetch', (event) => {
 
 		
 	
-	if (event.request.headers.get('accept').includes('text/html')) {
+	if (isRequested('pages', path)) {
 		console.log(event.request);
 		event.respondWith(
 			caches
@@ -97,13 +97,9 @@ self.addEventListener('fetch', (event) => {
 						.then((cache) => cache.match('/offline'))
 				)
 		);
-
 	} 
-	
 
-	else if (isRequested(, path)) {
-			CORE_CACHE_ARRAY.map((items) => {})
-
+	else if (isRequested('files', path)) {
 		event.respondWith(
 			caches
 				.open(`files-${CORE_CACHE_VERSION}`)
@@ -111,7 +107,7 @@ self.addEventListener('fetch', (event) => {
 		);
 	}
 
-	else if (`assets-${CORE_CACHE_VERSION}`.includes(path)) {
+	else if (isRequested('assets', path)) {
 		event.respondWith(
 			caches
 				.open(`assets-${CORE_CACHE_VERSION}`)
@@ -129,5 +125,5 @@ self.addEventListener('fetch', (event) => {
  * @returns {Boolean} true or false if file is requested */ 
 
 function isRequested(type, path) { 
-	return CORE_CACHE_ASSETS.filter(item => item.name == `${type}-${CORE_CACHE_VERSION}`)[0].urls.includes(path);
+	return CORE_CACHE_ARRAY.filter(item => item.name == `${type}-${CORE_CACHE_VERSION}`)[0].urls.includes(path);
  }
