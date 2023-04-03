@@ -688,20 +688,20 @@ main > section:not(#product-detail)#shopping-card h2 {
 main > section:not(#product-detail)#shopping-card > section {
   width: 100%;
 }
-main > section:not(#product-detail)#shopping-card > section:first-of-type {
+main > section:not(#product-detail)#shopping-card > section#card-placeholder {
   padding: 1em;
   border-radius: 1em;
   border: 1px solid #ccc;
 }
-main > section:not(#product-detail)#shopping-card > section:first-of-type div {
+main > section:not(#product-detail)#shopping-card > section#card-placeholder div {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
-main > section:not(#product-detail)#shopping-card > section:first-of-type div img {
+main > section:not(#product-detail)#shopping-card > section#card-placeholder div img {
   width: 4em;
   transform: rotate(-22deg) translateY(1.2em);
 }
-main > section:not(#product-detail)#shopping-card > section:first-of-type div:first-of-type {
+main > section:not(#product-detail)#shopping-card > section#card-placeholder div:first-of-type {
   width: 100%;
   align-items: center;
   padding-left: 0.5em;
@@ -710,24 +710,26 @@ main > section:not(#product-detail)#shopping-card > section:first-of-type div:fi
   overflow: hidden;
   gap: 1em;
 }
-main > section:not(#product-detail)#shopping-card > section:first-of-type div:last-of-type {
+main > section:not(#product-detail)#shopping-card > section#card-placeholder div:last-of-type {
   gap: 1em;
   margin-top: 1em;
 }
-main > section:not(#product-detail)#shopping-card > section:first-of-type div:last-of-type label {
+main > section:not(#product-detail)#shopping-card > section#card-placeholder div:last-of-type label {
   border-radius: 0.5em;
   text-decoration: none;
   background-color: #2E9BD8;
+  min-width: fit-content;
 }
-main > section:not(#product-detail)#shopping-card > section:first-of-type div:last-of-type a {
+main > section:not(#product-detail)#shopping-card > section#card-placeholder div:last-of-type a {
   border: 2px solid #2E9BD8;
   background-color: #FFFFFF;
+  min-width: fit-content;
 }
-main > section:not(#product-detail)#shopping-card > section:first-of-type div p {
+main > section:not(#product-detail)#shopping-card > section#card-placeholder div p {
   font-weight: bold;
   width: 8em;
 }
-main > section:not(#product-detail)#shopping-card > section:nth-of-type(2) {
+main > section:not(#product-detail)#shopping-card > section#card {
   height: auto;
   max-width: 13em;
   padding: 0.5em;
@@ -737,40 +739,30 @@ main > section:not(#product-detail)#shopping-card > section:nth-of-type(2) {
   border-radius: 1em;
   border: 2px solid #ccc;
 }
-main > section:not(#product-detail)#shopping-card > section:nth-of-type(2) p {
+main > section:not(#product-detail)#shopping-card > section#card p {
   margin-top: 1em;
   color: #FFFFFF;
   font-style: italic;
 }
-main > section:not(#product-detail)#shopping-card > section:nth-of-type(2) div {
+main > section:not(#product-detail)#shopping-card > section#card div {
   border-radius: 1em;
   background-color: #FFFFFF;
 }
-main > section:not(#product-detail)#shopping-card > section:nth-of-type(2) div img {
+main > section:not(#product-detail)#shopping-card > section#card div img {
   width: 90%;
 }
-main > section:not(#product-detail)#shopping-card > section:nth-of-type(2) img {
+main > section:not(#product-detail)#shopping-card > section#card img {
   width: 60%;
   margin-top: 1em;
 }
-main > section:not(#product-detail)#shopping-card > section:nth-of-type(3) {
-  margin-top: 1em;
-  padding: 0 2em;
-  text-align: center;
-}
-main > section:not(#product-detail)#shopping-card > section:nth-of-type(3) div {
-  margin: 1em 0;
-  display: flex;
-  gap: 2em;
-}
-main > section:not(#product-detail)#shopping-card > section:last-of-type {
+main > section:not(#product-detail)#shopping-card > section > div {
   width: 70%;
   margin-top: 1em;
   margin-left: auto;
   margin-right: auto;
   border-top: 1px solid #ccc;
 }
-main > section:not(#product-detail)#shopping-card > section:last-of-type button {
+main > section:not(#product-detail)#shopping-card > section > div button {
   width: 80%;
   margin-top: 1em;
 }

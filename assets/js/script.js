@@ -3,20 +3,23 @@ import { ChangeCounterValue, SetProduct } from './set-list.js';
 import { StartCameraScan } from './barcode-handler.js';
 
 if ('serviceWorker' in navigator) {
-	console.log('Service worker registerd');
-	navigator.serviceWorker.register('/js/serviceWorker.js');
+	navigator.serviceWorker.register('../serviceWorker.js').then((registration)=> {
+		console.log('Service worker registerd' + registration.scope);
+	});
 }
 
-scan.start.addEventListener('click', () => {
-	StartCameraScan('product');
-	popUp.scan.classList.remove('open');
-});
+if (scan.start) {
+	scan.start.addEventListener('click', () => {
+		StartCameraScan('product');
+		popUp.scan.classList.remove('open');
+	});
 
-scan.toggle.addEventListener('click', () => {
-	popUp.scan.classList.add('open');
-});
+	scan.toggle.addEventListener('click', () => {
+		popUp.scan.classList.add('open');
+	});
+}
 
-if (count.increaseBtn !== null) {
+if (count.increaseBtn) {
 	count.increaseBtn.addEventListener('click', () => {
 		if (count.counterIndex.classList.contains('required'))
 			count.counterIndex.classList.remove('required');

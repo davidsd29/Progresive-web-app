@@ -22,7 +22,7 @@ search
         shoppingCards.push(req.query.search_value)
         console.log(imgString)
 		
-		    const pageType = "card";
+		const pageType = "card";
         res.render("pages/main", {
             pageType,
             saved: true,

@@ -10,9 +10,7 @@ export default product;
 function GetFetchLink(type, barcode) {
 	if (type === 'string') {
 		return `https://world.openfoodfacts.org/api/v0/product/${barcode}.json`;
-	} else {
-		return `https://world.openfoodfacts.org/api/v0/product/${barcode.productCode}.json`
-	}
+	} 
 }
 
 
