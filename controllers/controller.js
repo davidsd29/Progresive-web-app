@@ -74,7 +74,6 @@ const groceries = async (req, res) => {
 
 		default:
 			total_name = 'products';
-			console.log('No filter found');
 	}
 
 	Promise.all(fetchArrays).then((shoppingList) => {

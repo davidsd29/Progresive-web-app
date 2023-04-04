@@ -10,7 +10,9 @@ export default product;
 function GetFetchLink(type, barcode) {
 	if (type === 'string') {
 		return `https://world.openfoodfacts.org/api/v0/product/${barcode}.json`;
-	} 
+	} else {
+		return `https://world.openfoodfacts.org/api/v0/product/${barcode.productCode}.json`;
+	}
 }
 
 
@@ -22,9 +24,11 @@ async function GetData(url) {
 		if (!response.ok) {
 			throw new Error('This product is not available');
 		}
+		console.log('apple')
 
 		return await response.json();
 	} catch (error) {
+		console.log('peer')
 		console.log(error);
 	}
 }
@@ -32,8 +36,12 @@ async function GetData(url) {
 
 async function ReplanishData(barcode, dataType) {
 	// DataIsLoading(true);
+	console.log('banaan')
+	console.log(barcode)
+
 	const data = await GetData(GetFetchLink(typeof barcode, barcode));
 
+	console.log(dataType + " meloen")
 	switch (dataType) {
 		case 'product':
 			// Product Detail
@@ -43,6 +51,7 @@ async function ReplanishData(barcode, dataType) {
 
 		case 'listItem':
 			// Groceries List
+			console.log(data)
 			const obj = {
 				product: data.product,
 				productAmount: barcode.productAmount,
@@ -50,7 +59,7 @@ async function ReplanishData(barcode, dataType) {
 
 			return obj;
 		default:
-			console.log('data type found');
+			console.log('data type not found');
 	}
 }
 

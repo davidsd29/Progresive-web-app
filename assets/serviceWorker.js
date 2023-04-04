@@ -3,11 +3,7 @@ const RUNTIME_CACHE_NAME = 'runtime-cache';
 const CORE_CACHE_ARRAY = [
 	{
 		name: `files-${CORE_CACHE_VERSION}`,
-		urls: [
-			'/manifest/manifest.json',
-			'/css/style.css',
-			'/js/script.js',
-		],
+		urls: ['/manifest/manifest.json', '/css/style.css', '/js/script.js'],
 	},
 	{
 		name: `assets-${CORE_CACHE_VERSION}`,
@@ -21,13 +17,12 @@ const CORE_CACHE_ARRAY = [
 	},
 	{
 		name: `pages-${CORE_CACHE_VERSION}`,
-		urls: ['/', '/home', '/offline', '/groceries'],	
+		urls: ['/', '/home', '/offline', '/groceries', '/card'],
 	},
 ];
 
 // Get all names from CASH ARRAY
 let cacheNames = CORE_CACHE_ARRAY.map((cache) => cache.name);
-
 
 self.addEventListener('install', (event) => {
 	console.log('Install service worker');
@@ -35,6 +30,7 @@ self.addEventListener('install', (event) => {
 		caches
 			.keys()
 			.then((keys) => {
+				console.log(keys);
 				return Promise.all(
 					CORE_CACHE_ARRAY.map((object) => {
 						// Check if object exist in cash
@@ -78,17 +74,30 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
 	console.log(`Handling fetch event for ${event.request.url}`);
 	const path = new URL(event.request.url).pathname;
-	console.log(path);
 
+	console.log(event.request.mode);
 
-		
-	
 	if (isRequested('pages', path)) {
 		console.log(event.request);
 		event.respondWith(
 			caches
 				.open(`pages-${CORE_CACHE_VERSION}`)
-				.then((cache) => cache.match(event.request))
+				.then((cache) => {
+					if (path == '/groceries') {
+						return fetch(event.request.url)
+							.then((fetchedResponse) => {
+								cache.put(event.request, fetchedResponse.clone());
+
+								return fetchedResponse;
+							})
+							.catch(() => {
+								// If the network is unavailable, get
+								return cache.match(event.request.url);
+							});
+					} else {
+						return cache.match(event.request, { ignoreSearch: true });
+					}
+				})
 				// If there is no response fetchAndCache
 				.then((response) => response)
 				.catch(() =>
@@ -97,33 +106,36 @@ self.addEventListener('fetch', (event) => {
 						.then((cache) => cache.match('/offline'))
 				)
 		);
-	} 
-
-	else if (isRequested('files', path)) {
-		event.respondWith(
-			caches
-				.open(`files-${CORE_CACHE_VERSION}`)
-				.then((cache) => cache.match(path))
-		);
-	}
-
-	else if (isRequested('assets', path)) {
-		event.respondWith(
-			caches
-				.open(`assets-${CORE_CACHE_VERSION}`)
-				.then((cache) => cache.match(path))
-		);
+	} else if (isRequested('files', path)) {
+		cacheOnly(event, 'files', path)
+	} else if (isRequested('assets', path)) {
+		cacheOnly(event, 'assets', path)
 	}
 });
 
+/** * Check if a file is from a specified type *
+ * @param {String} type is an object name of the CORE_CACHE_ASSETS *
+ * @param {URL} path to the source *
+ * @returns {Boolean} true or false if file is requested */
+
+function isRequested(type, path) {
+	return CORE_CACHE_ARRAY.filter(
+		(item) => item.name == `${type}-${CORE_CACHE_VERSION}`
+	)[0].urls.includes(path);
+}
 
 
+/** * Check if a path is a match in cache version *
+ * @param {String} cacheName is an object name of the CORE_CACHE_ASSETS *
+ * @param {Event} event is the event that is running *
+ * @param {URL} path to the source *
+ * @returns {Boolean} true or false if file is requested */
 
-/** * Check if a file is from a specified type * 
- * @param {String} type is an object name of the CORE_CACHE_ASSETS * 
- * @param {URL} path to the source * 
- * @returns {Boolean} true or false if file is requested */ 
+function cacheOnly(event, cacheName, path) {
+	event.respondWith(
+			caches
+				.open(`${cacheName}-${CORE_CACHE_VERSION}`)
+				.then((cache) => cache.match(path))
+		);
 
-function isRequested(type, path) { 
-	return CORE_CACHE_ARRAY.filter(item => item.name == `${type}-${CORE_CACHE_VERSION}`)[0].urls.includes(path);
- }
+}
