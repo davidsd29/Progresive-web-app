@@ -100,11 +100,12 @@ self.addEventListener('fetch', (event) => {
 				})
 				// If there is no response fetchAndCache
 				.then((response) => response)
-				.catch(() =>
-					caches
+				.catch((error) => {
+					console.log(error)
+					return caches
 						.open(`pages-${CORE_CACHE_VERSION}`)
 						.then((cache) => cache.match('/offline'))
-				)
+				})
 		);
 	} else if (isRequested('files', path)) {
 		cacheOnly(event, 'files', path)
