@@ -1,35 +1,38 @@
 <section id="shopping-card">
     <h2>Your Shopping card</h2>
 
-        <section id="card-placeholder">
-            <div>
-                <p><%= saved %> ik</p>
-                <p>Link your (digital) Shopping card</p>
-                <img src="/img/card.png" alt="The app shopping card">
-            </div>
-            <div>
-                <label class="btn">
-                    Link Shopping card
-                    <input type="checkbox" name="scan-card">
-                </label>
-                <!-- <a href="" class="btn">Link Shopping card</a> -->
-                <a href="/home" class="btn">Not now</a>
-            </div>
-        </section>
-
-    
+    <% if (saved) { %>
+ 
         <section id="card">
             <div>
-                <img src=<%= imgString %> id="card-code" alt="Shopping card barcode" loading="lazy">
+                <img src=<%=imgString %> id="card-code" alt="Shopping card barcode" loading="lazy">
                 <!-- <img src="img/7893894894.png" id="card-code" alt=" Shopping card barcode"> -->
             </div>
             <p>Keep your body fit, and your hart too!</p>
             <img src="/img/healthy.png" alt="Health hart image">
         </section>
-
+        
         <div>
             <button class="btn">Delete card</button>
         </div>
 
+    <% } else { %>
+    
+            <section id="card-placeholder">
+                <div>
+                    <p>Link your (digital) Shopping card</p>
+                    <img src="/img/card.png" alt="The app shopping card">
+                </div>
+                <div>
+                    <label class="btn">
+                        Link Shopping card
+                        <input type="checkbox" name="scan-card">
+                    </label>
+                    <!-- <a href="" class="btn">Link Shopping card</a> -->
+                    <a href="/home" class="btn">Not now</a>
+                </div>
+            </section>  
+       
+    <% } %>
 
 </section>
