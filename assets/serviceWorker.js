@@ -1,5 +1,4 @@
 const CORE_CACHE_VERSION = 'v1';
-const RUNTIME_CACHE_NAME = 'runtime-cache';
 const CORE_CACHE_ARRAY = [
 	{
 		name: `files-${CORE_CACHE_VERSION}`,
@@ -13,6 +12,9 @@ const CORE_CACHE_ARRAY = [
 			'/img/check-mark.png',
 			'/img/scan.png',
 			'/img/sad-angry.png',
+			'/img/whoops.png',
+			'/img/healthy.png',
+			'/img/card.png',
 		],
 	},
 	{
@@ -25,7 +27,7 @@ const CORE_CACHE_ARRAY = [
 let cacheNames = CORE_CACHE_ARRAY.map((cache) => cache.name);
 
 self.addEventListener('install', (event) => {
-	console.log('Install service worker');
+	console.log('Installing service worker');
 	event.waitUntil(
 		caches
 			.keys()
@@ -53,7 +55,6 @@ self.addEventListener('install', (event) => {
 	);
 });
 
-
 self.addEventListener('activate', (event) => {
 	console.log('Activating service worker');
 	event.waitUntil(
@@ -70,12 +71,9 @@ self.addEventListener('activate', (event) => {
 	);
 });
 
-
 self.addEventListener('fetch', (event) => {
 	console.log(`Handling fetch event for ${event.request.url}`);
 	const path = new URL(event.request.url).pathname;
-
-	console.log(event.request.mode);
 
 	if (isRequested('pages', path)) {
 		console.log(event.request);
@@ -101,16 +99,16 @@ self.addEventListener('fetch', (event) => {
 				// If there is no response fetchAndCache
 				.then((response) => response)
 				.catch((error) => {
-					console.log(error)
+					console.log(error);
 					return caches
 						.open(`pages-${CORE_CACHE_VERSION}`)
-						.then((cache) => cache.match('/offline'))
+						.then((cache) => cache.match('/offline'));
 				})
 		);
 	} else if (isRequested('files', path)) {
-		cacheOnly(event, 'files', path)
+		cacheOnly(event, 'files', path);
 	} else if (isRequested('assets', path)) {
-		cacheOnly(event, 'assets', path)
+		cacheOnly(event, 'assets', path);
 	}
 });
 
@@ -125,18 +123,15 @@ function isRequested(type, path) {
 	)[0].urls.includes(path);
 }
 
-
-/** * Check if a path is a match in cache version *
+/** * Check if a path is a match in cache version and sends the files from the cache to the client. *
  * @param {String} cacheName is an object name of the CORE_CACHE_ASSETS *
  * @param {Event} event is the event that is running *
- * @param {URL} path to the source *
- * @returns {Boolean} true or false if file is requested */
+ * @param {URL} path to the source */
 
 function cacheOnly(event, cacheName, path) {
 	event.respondWith(
-			caches
-				.open(`${cacheName}-${CORE_CACHE_VERSION}`)
-				.then((cache) => cache.match(path))
-		);
-
+		caches
+			.open(`${cacheName}-${CORE_CACHE_VERSION}`)
+			.then((cache) => cache.match(path))
+	);
 }
